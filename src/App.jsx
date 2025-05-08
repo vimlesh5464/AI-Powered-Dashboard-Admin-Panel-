@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
 import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
+import Home from './pages/Home';  // Add this import for Home
 import NotFound from './pages/NotFound';
 
 import {
@@ -12,6 +13,14 @@ import {
 } from "react-router-dom";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <DashboardLayout>
+        <Home />  {/* You can create a Home page component for this */}
+      </DashboardLayout>
+    ),
+  },
   {
     path: "/dashboard",
     element: (
@@ -46,19 +55,16 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: <NotFound />,  // Fallback for unknown routes
   },
 ]);
 
-
 function App() {
-  
-
   return (
     <div>
-     <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
